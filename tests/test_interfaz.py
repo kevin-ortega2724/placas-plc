@@ -68,3 +68,15 @@ def test_interfaz_sin_imagen_seleccionada_no_lanza_excepcion():
     at.run(timeout=60)
 
     assert not at.exception
+
+
+def test_interfaz_origen_camara_sin_foto_no_lanza_excepcion():
+    at = AppTest.from_file(RUTA_APP)
+    at.run(timeout=60)
+
+    for radio in at.sidebar.radio:
+        if "origen" in radio.label.lower():
+            radio.set_value("Camara")
+    at.run(timeout=60)
+
+    assert not at.exception

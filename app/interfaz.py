@@ -53,7 +53,7 @@ def _obtener_plc() -> PlcSimulado:
 
 def _barra_lateral() -> tuple[np.ndarray | None, str | None, datetime, bool, str]:
     st.sidebar.header("Fuente")
-    origen = st.sidebar.radio("Origen de la imagen", ["Carpeta", "Subir imagen"])
+    origen = st.sidebar.radio("Origen de la imagen", ["Carpeta", "Subir imagen", "Camara"])
 
     imagen = None
     nombre = None
@@ -65,12 +65,20 @@ def _barra_lateral() -> tuple[np.ndarray | None, str | None, datetime, bool, str
             imagen = cv2.imread(str(carpeta / nombre))
         else:
             st.sidebar.warning("No hay imagenes .png en esa carpeta.")
-    else:
+    elif origen == "Subir imagen":
         archivo_subido = st.sidebar.file_uploader("Imagen", type=["png", "jpg", "jpeg"])
         if archivo_subido is not None:
             datos = np.frombuffer(archivo_subido.read(), np.uint8)
             imagen = cv2.imdecode(datos, cv2.IMREAD_COLOR)
             nombre = archivo_subido.name
+    else:  # Camara: usa la camara del navegador (st.camera_input), no cv2.VideoCapture,
+        # porque un servidor Streamlit no deberia mantener un dispositivo de camara
+        # abierto entre una recarga de pagina y otra.
+        foto = st.sidebar.camera_input("Tomar foto del vehiculo")
+        if foto is not None:
+            datos = np.frombuffer(foto.getvalue(), np.uint8)
+            imagen = cv2.imdecode(datos, cv2.IMREAD_COLOR)
+            nombre = "camara.png"
 
     st.sidebar.header("Fecha y hora")
     usar_fecha_real = st.sidebar.checkbox("Usar fecha y hora reales", value=False)
