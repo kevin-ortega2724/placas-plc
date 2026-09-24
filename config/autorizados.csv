@@ -1,0 +1,13 @@
+placa,categoria,titular,excepcion_pico_placa
+UTP123,docente,Docente 01,false
+UTP456,docente,Docente 02,false
+ABC120,estudiante,Estudiante 01,false
+ABC231,estudiante,Estudiante 02,false
+DEF342,administrativo,Administrativo 01,false
+GHI453,estudiante,Estudiante 03,false
+JKL564,visitante,Visitante 01,false
+MNO675,estudiante,Estudiante 04,false
+PQR786,docente,Docente 03,false
+STU897,administrativo,Administrativo 02,false
+AMB911,emergencia,Ambulancia campus,true
+ELE100,docente,Vehiculo electrico 01,true

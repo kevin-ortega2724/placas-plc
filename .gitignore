@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/crudas/*
+!data/crudas/.gitkeep
+salidas/*
+!salidas/.gitkeep
+.DS_Store
+.vscode/
+.idea/
