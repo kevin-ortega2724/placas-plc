@@ -30,7 +30,7 @@ Cámara / imágenes ──► Visión (Python) ──► Reglas ──► Señal
 |---|---|
 | `config/` | Reglas de pico y placa, lista de autorizados y reportados |
 | `data/crudas/` | Imágenes reales tomadas por el grupo (no se suben a GitHub) |
-| `data/sinteticas/` | Placas generadas por software para pruebas |
+| `data/sinteticas/` | Placas generadas por software para pruebas (no se suben a GitHub, se regeneran con `python -m placas.generador`) |
 | `src/placas/` | Módulos del sistema de visión, reglas y señales |
 | `app/` | Interfaz gráfica |
 | `plc/` | Proyectos de OpenPLC y CODESYS (ladder) |

@@ -6,6 +6,8 @@ __pycache__/
 .pytest_cache/
 data/crudas/*
 !data/crudas/.gitkeep
+data/sinteticas/*
+!data/sinteticas/.gitkeep
 salidas/*
 !salidas/.gitkeep
 .DS_Store

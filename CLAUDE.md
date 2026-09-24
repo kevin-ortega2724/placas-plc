@@ -14,8 +14,9 @@ Proyecto didáctico: los estudiantes leerán y modificarán este código. La cla
 - Toda función de procesamiento puede guardar su imagen intermedia en `salidas/` cuando `depurar=True`, con nombre `NN_etapa.png`, para que los estudiantes vean cada paso.
 
 ## Datos
-- No subir imágenes reales. `data/crudas/` y `salidas/` están en `.gitignore`.
-- Las pruebas usan imágenes de `data/sinteticas/` generadas por `src/placas/generador.py`.
+- No subir imágenes reales. `data/crudas/`, `data/sinteticas/` y `salidas/` están en `.gitignore` (las sintéticas pesan demasiado para versionarlas y son reproducibles).
+- Antes de trabajar, cada quien genera su copia local: `python -m placas.generador --n 200 --semilla 42`. Con la misma semilla el dataset es idéntico para todos.
+- Las pruebas automáticas no dependen de este dataset fijo: generan sus propias imágenes de prueba en carpetas temporales.
 
 ## Pruebas
 - pytest en `tests/`. Cada fase agrega sus pruebas. Todas deben pasar antes de cerrar una fase.
