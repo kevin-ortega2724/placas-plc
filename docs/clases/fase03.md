@@ -45,3 +45,7 @@ Comparar el resultado de Canny con al menos tres combinaciones distintas de `can
 - Se prueban al menos 3 combinaciones de umbrales (editando `config/reglas.yaml`, sin tocar `preproceso.py`).
 - Se guardan las 3 imágenes de bordes resultantes con nombres distintos en `salidas/`.
 - La justificación compara explícitamente cuántos bordes de fondo (ruido) aparecen frente a qué tan completo queda el contorno de la placa.
+
+---
+
+[Fase anterior](fase02.md) · [Índice de guías](../README.md) · [Fase siguiente](fase04.md)

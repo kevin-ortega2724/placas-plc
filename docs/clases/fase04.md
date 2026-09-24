@@ -51,3 +51,7 @@ Ajustar el rango HSV de `config/reglas.yaml` para que la detección por color fu
 - El ajuste se hace solo en `config/reglas.yaml` (rango HSV), sin tocar `localizacion.py`.
 - Se documenta en un comentario del propio YAML qué condición de luz motivó el cambio.
 - El porcentaje de localización por color no baja respecto al reportado con las imágenes normales (se puede correr `python -m placas.localizacion` antes y después del cambio para comparar).
+
+---
+
+[Fase anterior](fase03.md) · [Índice de guías](../README.md) · [Fase siguiente](fase05.md)

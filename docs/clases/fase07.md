@@ -57,3 +57,7 @@ Agregar la regla: "los vehículos con excepción solo pueden entrar en pico y pl
 - Se agrega una prueba parametrizada que verifique que una placa con excepción pero que NO está en `autorizados.csv` recibe `NO_AUTORIZADO`, no `PERMITIDO`.
 - La prueba falla si alguien reordena las condiciones de `decidir` de forma incorrecta (es decir, protege el orden de prioridades).
 - El resto de las pruebas de `test_reglas.py` sigue pasando.
+
+---
+
+[Fase anterior](fase06.md) · [Índice de guías](../README.md) · [Fase siguiente](fase08.md)

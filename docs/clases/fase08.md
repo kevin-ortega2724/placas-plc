@@ -53,3 +53,7 @@ Agregar un registro con el número de lecturas consecutivas de la misma placa (a
 - Se agrega un campo a `Senales` (por ejemplo `lecturas_consecutivas`) y su holding register correspondiente en `a_modbus`.
 - `plc_simulado.py` solo incrementa `contador_ingresos` en la primera lectura de una racha, no en las repeticiones de la misma placa.
 - Se agrega una prueba que verifique que 3 lecturas seguidas de la misma placa cuentan como 1 solo ingreso.
+
+---
+
+[Fase anterior](fase07.md) · [Índice de guías](../README.md) · [Fase siguiente](fase09.md)

@@ -47,3 +47,7 @@ Mostrar el histograma de cada canal de color (B, G, R) de una imagen.
 - Se calcula el histograma de los tres canales por separado (por ejemplo con `cv2.calcHist` o `np.histogram`).
 - El resultado se muestra en pantalla o se guarda en `salidas/` para al menos una imagen de `data/sinteticas/`.
 - El código queda en una función independiente, reutilizable desde otra fase (por ejemplo, la de preprocesamiento).
+
+---
+
+[Fase anterior](fase01.md) · [Índice de guías](../README.md) · [Fase siguiente](fase03.md)

@@ -45,3 +45,7 @@ Identificar las tres confusiones de caracteres más frecuentes en `salidas/confu
 - Se listan las tres confusiones más frecuentes con su conteo exacto (leído de la matriz).
 - La propuesta de corrección está justificada con los datos del cuaderno (no solo intuición) y considera el riesgo de introducir falsos positivos.
 - Se vuelve a correr `python -m placas.evaluacion` después del cambio y se compara la exactitud antes/después.
+
+---
+
+[Fase anterior](fase05.md) · [Índice de guías](../README.md) · [Fase siguiente](fase07.md)

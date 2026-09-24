@@ -44,3 +44,7 @@ Agregar un panel con escenarios predefinidos (botones como "Lunes 7 a.m.", "Sáb
 - Los botones solo modifican el valor de fecha/hora en el estado de la sesión de Streamlit (`st.session_state`), sin agregar lógica de decisión nueva.
 - Al menos un escenario predefinido corresponde a un día festivo real (verificable con la librería `holidays`).
 - La interfaz sigue pasando `pytest tests/test_interfaz.py`.
+
+---
+
+[Fase anterior](fase08.md) · [Índice de guías](../README.md) · [Fase siguiente](fase10.md)

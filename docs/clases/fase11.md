@@ -42,3 +42,7 @@ Agregar un segundo carril de entrada con su propia talanquera (según el ROADMAP
 - El segundo carril usa un rango de direcciones IEC propio, documentado en una copia actualizada de `mapa_modbus.md`, sin chocar con el primero.
 - Se justifica explícitamente si el botón de emergencia es compartido (una sola entrada detiene ambos carriles) o independiente, y por qué esa es la decisión de seguridad correcta.
 - El protocolo de `pruebas.md` se extiende para verificar el segundo carril de forma independiente del primero.
+
+---
+
+[Fase anterior](fase10.md) · [Índice de guías](../README.md) · [Fase siguiente](fase12.md)

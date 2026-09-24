@@ -56,3 +56,7 @@ Guardar un histórico en CSV y graficar ingresos por hora (si aún no lo ha prob
 - La gráfica de ingresos por hora coincide con un conteo manual verificado sobre el CSV crudo (no solo "se ve razonable").
 - Se agrega una gráfica equivalente para `contador_rechazos`.
 - El HMI sigue sin escribir ningún coil ni registro (verificable revisando que no se usen `write_coils`/`write_registers` en `hmi/monitor.py`).
+
+---
+
+[Fase anterior](fase11.md) · [Índice de guías](../README.md) · [Fase siguiente](fase13.md)

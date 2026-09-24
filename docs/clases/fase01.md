@@ -49,3 +49,7 @@ Agregar un nuevo tipo de degradación (por ejemplo: lluvia, sombra proyectada, o
 - La nueva degradación es una función separada (no se mezcla con las existentes).
 - Su parámetro queda registrado como columna nueva en `etiquetas.csv`.
 - `pytest` sigue pasando y el dataset se sigue generando de forma reproducible con la misma semilla.
+
+---
+
+[Fase anterior](fase00.md) · [Índice de guías](../README.md) · [Fase siguiente](fase02.md)

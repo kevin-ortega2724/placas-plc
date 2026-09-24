@@ -46,3 +46,7 @@ Agregar soporte para placas de moto (`ABC12D`: tres letras, dos números y una l
 - `normalizar_texto` sigue funcionando igual para placas de carro (no rompe las pruebas existentes).
 - Se agrega una prueba que verifique la normalización de una placa de moto con al menos un carácter mal leído.
 - `_determinar_tipo` devuelve `"moto"` para placas que cumplan `formato_placa.moto` de config, sin necesitar cambios en `config/reglas.yaml`.
+
+---
+
+[Fase anterior](fase04.md) · [Índice de guías](../README.md) · [Fase siguiente](fase06.md)

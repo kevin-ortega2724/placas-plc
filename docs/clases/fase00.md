@@ -51,3 +51,7 @@ Agregar una regla nueva en `config/reglas.yaml`: restringir el dígito `5` los s
 - El cambio se hace solo en `config/reglas.yaml`, sin tocar `configuracion.py`.
 - `python -m placas.configuracion` muestra la nueva restricción del sábado.
 - `pytest` sigue pasando sin modificar las pruebas existentes.
+
+---
+
+[Índice de guías](../README.md) · [Fase siguiente](fase01.md)

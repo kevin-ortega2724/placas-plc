@@ -48,3 +48,7 @@ Capturar el tráfico con Wireshark e identificar los códigos de función 05, 06
 - Se entrega una captura (o al menos capturas de pantalla de Wireshark) mostrando al menos un paquete de cada uno de los cuatro códigos de función.
 - Para cada código encontrado, se identifica correctamente qué programa lo generó y por qué (no basta con decir "Modbus lo hizo").
 - Se explica la diferencia entre "escribir un solo punto" (05/06) y "escribir varios de una vez" (15/16) con un ejemplo concreto de la captura.
+
+---
+
+[Fase anterior](fase09.md) · [Índice de guías](../README.md) · [Fase siguiente](fase11.md)
