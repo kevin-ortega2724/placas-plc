@@ -46,6 +46,18 @@ def test_interfaz_muestra_pasos_intermedios_sin_excepciones():
     assert not at.exception
 
 
+def test_interfaz_destino_modbus_sin_servidor_no_lanza_excepcion():
+    at = AppTest.from_file(RUTA_APP)
+    at.run(timeout=60)
+
+    for selector in at.sidebar.selectbox:
+        if "enviar a" in selector.label.lower():
+            selector.set_value("Modbus TCP")
+    at.run(timeout=60)
+
+    assert not at.exception
+
+
 def test_interfaz_sin_imagen_seleccionada_no_lanza_excepcion():
     at = AppTest.from_file(RUTA_APP)
     at.run(timeout=60)

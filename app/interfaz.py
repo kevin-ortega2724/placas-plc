@@ -15,13 +15,14 @@ import cv2
 import numpy as np
 import streamlit as st
 
-from placas.configuracion import cargar_autorizados, cargar_reglas, cargar_reportados
+from placas.comunicacion import ClienteModbusAcceso
+from placas.configuracion import Plc, cargar_autorizados, cargar_reglas, cargar_reportados
 from placas.localizacion import dibujar_candidatos
 from placas.pipeline import procesar_imagen
 from placas.plc_simulado import PlcSimulado
 from placas.preproceso import preprocesar
 from placas.reglas import decidir
-from placas.senales import a_modbus, a_senales
+from placas.senales import Senales, a_modbus, a_senales
 
 RUTA_REGLAS = "config/reglas.yaml"
 RUTA_AUTORIZADOS = "config/autorizados.csv"
@@ -84,10 +85,7 @@ def _barra_lateral() -> tuple[np.ndarray | None, str | None, datetime, bool, str
     mostrar_pasos = st.sidebar.checkbox("Mostrar pasos intermedios", value=False)
 
     st.sidebar.header("Destino de las senales")
-    destino = st.sidebar.selectbox("Enviar a", ["PLC simulado", "Modbus (fase 10, aun deshabilitado)"])
-    if destino != "PLC simulado":
-        st.sidebar.info("El destino Modbus se habilita en la Fase 10.")
-        destino = "PLC simulado"
+    destino = st.sidebar.selectbox("Enviar a", ["PLC simulado", "Modbus TCP"])
 
     return imagen, nombre, fecha_hora, mostrar_pasos, destino
 
@@ -102,6 +100,26 @@ def _lampara(etiqueta: str, encendida: bool, color_encendido: str) -> str:
     )
 
 
+def _enviar_por_modbus(senales: Senales, config_plc: Plc) -> None:
+    """Envia las senales a un servidor Modbus real (por ejemplo,
+    hmi/servidor_prueba.py). Un fallo de conexion se muestra en la
+    interfaz, pero nunca la detiene (ver Fase 10).
+    """
+    cliente = ClienteModbusAcceso(
+        config_plc.host, config_plc.puerto, config_plc.unidad, intentos_conexion=1, tiempo_espera_s=1.0
+    )
+    if not cliente.conectar():
+        st.error(f"No se pudo conectar al PLC en {config_plc.host}:{config_plc.puerto}.")
+        return
+    try:
+        if cliente.enviar(senales):
+            st.success(f"Senales enviadas por Modbus a {config_plc.host}:{config_plc.puerto}.")
+        else:
+            st.error("Se conecto al PLC, pero fallo el envio de las senales.")
+    finally:
+        cliente.detener()
+
+
 def main() -> None:
     st.set_page_config(page_title="Control de acceso - placas", layout="wide")
     st.title("Control de acceso vehicular con pico y placa")
@@ -109,7 +127,7 @@ def main() -> None:
     reglas, autorizados, reportados = _cargar_configuracion()
     plc = _obtener_plc()
 
-    imagen, nombre, fecha_hora, mostrar_pasos, _destino = _barra_lateral()
+    imagen, nombre, fecha_hora, mostrar_pasos, destino = _barra_lateral()
 
     if imagen is None:
         st.info("Seleccione o suba una imagen en la barra lateral para comenzar.")
@@ -122,6 +140,9 @@ def main() -> None:
 
     plc.recibir_senales(senales)
     plc.ciclo(0.05)
+
+    if destino == "Modbus TCP":
+        _enviar_por_modbus(senales, reglas.plc)
 
     columna_imagen, columna_info = st.columns([2, 1])
 
