@@ -1,5 +1,8 @@
 # Guía de navegación
 
+**¿Trabajas en Windows? Sigue la [guía completa de PowerShell](tutoriales/00-windows.md)**, con comandos que no requieren activar scripts.
+
+
 Empieza por los tutoriales en orden. Ejecuta los comandos desde la raíz del repositorio, con el entorno activado. Antes de avanzar, completa la comprobación y guarda la evidencia.
 
 ## Tutoriales del estudiante

@@ -1,5 +1,8 @@
 # 00 · Instalación y primera ejecución
 
+**¿Trabajas en Windows? Sigue la [guía completa de PowerShell](00-windows.md)**, con comandos que no requieren activar scripts.
+
+
 **Objetivo:** abrir la interfaz con datos sintéticos. Necesitas Git, Python (3.11 recomendado), terminal y navegador. Reserva conexión a Internet para dependencias y la primera descarga de modelos OCR.
 
 ## 1. Obtén el proyecto

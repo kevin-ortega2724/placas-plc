@@ -4,7 +4,7 @@ Proyecto didáctico de **Automatización Industrial — Ingeniería Eléctrica, 
 
 ## Empieza aquí
 
-1. Sigue [instalación y primera ejecución](docs/tutoriales/00-instalacion.md).
+1. Empieza con [Windows y PowerShell](docs/tutoriales/00-windows.md) o con la [instalación general](docs/tutoriales/00-instalacion.md).
 2. Completa los [tutoriales prácticos por etapas](docs/README.md).
 3. Registra cada experimento con la [plantilla de informe](docs/plantillas/informe.md).
 
@@ -20,6 +20,22 @@ flowchart LR
     F --> G[PLC mediante Modbus TCP]
     G --> H[HMI de solo lectura]
 ```
+
+## Primera ejecución en Windows (PowerShell)
+
+Prepara Git y Python 3.11 de 64 bits. Ejecuta las líneas una a una:
+
+```powershell
+git clone https://github.com/kevin-ortega2724/placas-plc.git
+cd placas-plc
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -e .
+.\.venv\Scripts\python.exe -m placas.generador --n 20 --semilla 42
+.\.venv\Scripts\python.exe -m streamlit run app/interfaz.py
+```
+
+Abre `http://localhost:8501`. No necesitas activar scripts de PowerShell. La [guía completa para Windows](docs/tutoriales/00-windows.md) explica instalación, pruebas, terminales para Modbus y problemas frecuentes. La validación del mantenedor se realizó en Linux; queda pendiente registrar una ejecución en Windows.
 
 ## Primera ejecución en Linux / macOS
 

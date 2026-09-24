@@ -16,6 +16,8 @@
 | Cámara no disponible | Permisos del navegador | Autoriza cámara en localhost o prueba subir una imagen |
 | Aparece `launch_testing`, ROS o falta `lark` al ejecutar pytest | `PYTHONPATH` de ROS contamina el entorno | En Linux usa `env -u PYTHONPATH .venv/bin/python -m pytest -q` |
 
+Para problemas de instalación, lanzador `py`, políticas de PowerShell o rutas en Windows, consulta la [guía específica](tutoriales/00-windows.md).
+
 ## Antes de reportar un error
 
 Copia el comando, versión de Python, traceback y pasos mínimos para repetirlo. Indica si usas simulador, servidor de prueba u OpenPLC. Adjunta solo datos sintéticos o autorizados.
