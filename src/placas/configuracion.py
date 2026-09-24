@@ -76,6 +76,18 @@ class Preproceso:
 
 
 @dataclass
+class Localizacion:
+    hsv_amarillo_bajo: tuple[int, int, int]
+    hsv_amarillo_alto: tuple[int, int, int]
+    area_minima: float
+    relacion_aspecto_esperada: float
+    tolerancia_aspecto: float
+    rectangularidad_minima: float
+    ancho_rectificado: int
+    alto_rectificado: int
+
+
+@dataclass
 class Reglas:
     pico_y_placa: PicoYPlaca
     ocr: Ocr
@@ -83,6 +95,7 @@ class Reglas:
     correcciones: Correcciones
     plc: Plc
     preproceso: Preproceso
+    localizacion: Localizacion
 
 
 def cargar_reglas(ruta: str | Path) -> Reglas:
@@ -100,6 +113,7 @@ def cargar_reglas(ruta: str | Path) -> Reglas:
         correcciones=Correcciones(**contenido["correcciones"]),
         plc=Plc(**contenido["plc"]),
         preproceso=_construir_preproceso(contenido["preproceso"]),
+        localizacion=_construir_localizacion(contenido["localizacion"]),
     )
 
 
@@ -178,6 +192,28 @@ def _construir_preproceso(datos: dict) -> Preproceso:
         canny_umbral_bajo=bajo,
         canny_umbral_alto=alto,
         kernel_morfologico=int(datos["kernel_morfologico"]),
+    )
+
+
+def _construir_localizacion(datos: dict) -> Localizacion:
+    hsv_bajo = tuple(int(v) for v in datos["hsv_amarillo_bajo"])
+    hsv_alto = tuple(int(v) for v in datos["hsv_amarillo_alto"])
+    for nombre, hsv in (("hsv_amarillo_bajo", hsv_bajo), ("hsv_amarillo_alto", hsv_alto)):
+        if len(hsv) != 3 or not (0 <= hsv[0] <= 179) or not all(0 <= v <= 255 for v in hsv[1:]):
+            raise ErrorConfiguracion(
+                f"{nombre} invalido: {hsv}. Debe ser [H, S, V] con H en 0-179 y S, V en 0-255."
+            )
+    if datos["area_minima"] <= 0:
+        raise ErrorConfiguracion(f"area_minima invalida: {datos['area_minima']}. Debe ser mayor que 0.")
+    return Localizacion(
+        hsv_amarillo_bajo=hsv_bajo,
+        hsv_amarillo_alto=hsv_alto,
+        area_minima=float(datos["area_minima"]),
+        relacion_aspecto_esperada=float(datos["relacion_aspecto_esperada"]),
+        tolerancia_aspecto=float(datos["tolerancia_aspecto"]),
+        rectangularidad_minima=float(datos["rectangularidad_minima"]),
+        ancho_rectificado=int(datos["ancho_rectificado"]),
+        alto_rectificado=int(datos["alto_rectificado"]),
     )
 
 

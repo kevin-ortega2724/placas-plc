@@ -74,6 +74,15 @@ preproceso:
   canny_umbral_bajo: 50
   canny_umbral_alto: 150
   kernel_morfologico: 5
+localizacion:
+  hsv_amarillo_bajo: [15, 80, 80]
+  hsv_amarillo_alto: [35, 255, 255]
+  area_minima: 2000
+  relacion_aspecto_esperada: 2.0
+  tolerancia_aspecto: 0.6
+  rectangularidad_minima: 0.6
+  ancho_rectificado: 400
+  alto_rectificado: 200
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -119,6 +128,15 @@ preproceso:
   canny_umbral_bajo: 50
   canny_umbral_alto: 150
   kernel_morfologico: 5
+localizacion:
+  hsv_amarillo_bajo: [15, 80, 80]
+  hsv_amarillo_alto: [35, 255, 255]
+  area_minima: 2000
+  relacion_aspecto_esperada: 2.0
+  tolerancia_aspecto: 0.6
+  rectangularidad_minima: 0.6
+  ancho_rectificado: 400
+  alto_rectificado: 200
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -164,6 +182,15 @@ preproceso:
   canny_umbral_bajo: 50
   canny_umbral_alto: 150
   kernel_morfologico: 5
+localizacion:
+  hsv_amarillo_bajo: [15, 80, 80]
+  hsv_amarillo_alto: [35, 255, 255]
+  area_minima: 2000
+  relacion_aspecto_esperada: 2.0
+  tolerancia_aspecto: 0.6
+  rectangularidad_minima: 0.6
+  ancho_rectificado: 400
+  alto_rectificado: 200
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -209,6 +236,15 @@ preproceso:
   canny_umbral_bajo: 50
   canny_umbral_alto: 150
   kernel_morfologico: 5
+localizacion:
+  hsv_amarillo_bajo: [15, 80, 80]
+  hsv_amarillo_alto: [35, 255, 255]
+  area_minima: 2000
+  relacion_aspecto_esperada: 2.0
+  tolerancia_aspecto: 0.6
+  rectangularidad_minima: 0.6
+  ancho_rectificado: 400
+  alto_rectificado: 200
 plc:
   host: "127.0.0.1"
   puerto: 502
