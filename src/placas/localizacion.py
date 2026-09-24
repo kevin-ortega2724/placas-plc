@@ -116,17 +116,25 @@ def localizar_por_color(imagen: np.ndarray, parametros: Localizacion) -> Detecci
 
 
 def localizar_por_bordes(
-    imagen: np.ndarray, parametros: Localizacion, parametros_preproceso: Preproceso | None = None
+    imagen: np.ndarray,
+    parametros: Localizacion,
+    parametros_preproceso: Preproceso | None = None,
+    bordes_precalculados: np.ndarray | None = None,
 ) -> Deteccion:
     """Busca la placa a partir de contornos sobre los bordes de preproceso.py.
 
     Usa el resultado ya cerrado (cierre morfologico) de la Fase 03, que
-    conecta el contorno de la placa en una sola figura cuadrilatera.
+    conecta el contorno de la placa en una sola figura cuadrilatera. Si
+    ya se calcularon los bordes en otra etapa (por ejemplo, pipeline.py),
+    se pueden pasar en bordes_precalculados para no repetir el trabajo.
     """
-    parametros_preproceso = parametros_preproceso or _preproceso_por_defecto()
-    resultado = preprocesar(imagen, parametros_preproceso)
+    if bordes_precalculados is not None:
+        bordes = bordes_precalculados
+    else:
+        parametros_preproceso = parametros_preproceso or _preproceso_por_defecto()
+        bordes = preprocesar(imagen, parametros_preproceso).cerrado
 
-    contornos, _ = cv2.findContours(resultado.cerrado, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contornos, _ = cv2.findContours(bordes, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     return _mejor_deteccion(contornos, imagen, parametros, "bordes")
 
 
