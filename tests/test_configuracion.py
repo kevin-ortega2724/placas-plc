@@ -37,6 +37,9 @@ def test_cargar_reglas_lee_ocr_formato_correcciones_y_plc():
     assert reglas.correcciones.a_numero["O"] == "0"
     assert reglas.plc.host == "127.0.0.1"
     assert reglas.plc.puerto == 502
+    assert reglas.preproceso.clahe_clip_limit == pytest.approx(2.0)
+    assert reglas.preproceso.canny_umbral_bajo == 50
+    assert reglas.preproceso.canny_umbral_alto == 150
 
 
 def test_cargar_reglas_rechaza_dia_invalido(tmp_path):
@@ -62,6 +65,15 @@ formato_placa:
 correcciones:
   a_letra: {}
   a_numero: {}
+preproceso:
+  clahe_clip_limit: 2.0
+  clahe_tamano_grilla: 8
+  bilateral_diametro: 9
+  bilateral_sigma_color: 75
+  bilateral_sigma_espacio: 75
+  canny_umbral_bajo: 50
+  canny_umbral_alto: 150
+  kernel_morfologico: 5
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -98,6 +110,15 @@ formato_placa:
 correcciones:
   a_letra: {}
   a_numero: {}
+preproceso:
+  clahe_clip_limit: 2.0
+  clahe_tamano_grilla: 8
+  bilateral_diametro: 9
+  bilateral_sigma_color: 75
+  bilateral_sigma_espacio: 75
+  canny_umbral_bajo: 50
+  canny_umbral_alto: 150
+  kernel_morfologico: 5
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -134,6 +155,15 @@ formato_placa:
 correcciones:
   a_letra: {}
   a_numero: {}
+preproceso:
+  clahe_clip_limit: 2.0
+  clahe_tamano_grilla: 8
+  bilateral_diametro: 9
+  bilateral_sigma_color: 75
+  bilateral_sigma_espacio: 75
+  canny_umbral_bajo: 50
+  canny_umbral_alto: 150
+  kernel_morfologico: 5
 plc:
   host: "127.0.0.1"
   puerto: 502
@@ -170,6 +200,15 @@ formato_placa:
 correcciones:
   a_letra: {}
   a_numero: {}
+preproceso:
+  clahe_clip_limit: 2.0
+  clahe_tamano_grilla: 8
+  bilateral_diametro: 9
+  bilateral_sigma_color: 75
+  bilateral_sigma_espacio: 75
+  canny_umbral_bajo: 50
+  canny_umbral_alto: 150
+  kernel_morfologico: 5
 plc:
   host: "127.0.0.1"
   puerto: 502

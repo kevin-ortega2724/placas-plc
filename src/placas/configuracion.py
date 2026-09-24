@@ -64,12 +64,25 @@ class Plc:
 
 
 @dataclass
+class Preproceso:
+    clahe_clip_limit: float
+    clahe_tamano_grilla: int
+    bilateral_diametro: int
+    bilateral_sigma_color: float
+    bilateral_sigma_espacio: float
+    canny_umbral_bajo: int
+    canny_umbral_alto: int
+    kernel_morfologico: int
+
+
+@dataclass
 class Reglas:
     pico_y_placa: PicoYPlaca
     ocr: Ocr
     formato_placa: FormatoPlaca
     correcciones: Correcciones
     plc: Plc
+    preproceso: Preproceso
 
 
 def cargar_reglas(ruta: str | Path) -> Reglas:
@@ -86,6 +99,7 @@ def cargar_reglas(ruta: str | Path) -> Reglas:
         formato_placa=FormatoPlaca(**contenido["formato_placa"]),
         correcciones=Correcciones(**contenido["correcciones"]),
         plc=Plc(**contenido["plc"]),
+        preproceso=_construir_preproceso(contenido["preproceso"]),
     )
 
 
@@ -136,6 +150,34 @@ def _construir_ocr(datos: dict) -> Ocr:
         confianza_minima=confianza,
         idiomas=list(datos["idiomas"]),
         caracteres_permitidos=datos["caracteres_permitidos"],
+    )
+
+
+def _construir_preproceso(datos: dict) -> Preproceso:
+    bajo = int(datos["canny_umbral_bajo"])
+    alto = int(datos["canny_umbral_alto"])
+    if not (0 <= bajo < alto <= 255):
+        raise ErrorConfiguracion(
+            f"Umbrales de Canny invalidos: bajo={bajo}, alto={alto}. "
+            "Deben cumplir 0 <= bajo < alto <= 255."
+        )
+    if datos["clahe_clip_limit"] <= 0:
+        raise ErrorConfiguracion(
+            f"clahe_clip_limit invalido: {datos['clahe_clip_limit']}. Debe ser mayor que 0."
+        )
+    if datos["kernel_morfologico"] < 1:
+        raise ErrorConfiguracion(
+            f"kernel_morfologico invalido: {datos['kernel_morfologico']}. Debe ser mayor o igual a 1."
+        )
+    return Preproceso(
+        clahe_clip_limit=float(datos["clahe_clip_limit"]),
+        clahe_tamano_grilla=int(datos["clahe_tamano_grilla"]),
+        bilateral_diametro=int(datos["bilateral_diametro"]),
+        bilateral_sigma_color=float(datos["bilateral_sigma_color"]),
+        bilateral_sigma_espacio=float(datos["bilateral_sigma_espacio"]),
+        canny_umbral_bajo=bajo,
+        canny_umbral_alto=alto,
+        kernel_morfologico=int(datos["kernel_morfologico"]),
     )
 
 
